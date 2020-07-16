@@ -1,1 +1,1 @@
-# scene_change_with_jquery_little_project
+# Scene Change with jQuery—a little project
