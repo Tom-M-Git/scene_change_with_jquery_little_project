@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Project: Scene change</title>
+        <script src="https://kit.fontawesome.com/54b307d40d.js" crossorigin="anonymous"></script>
+        <style>
+        #dove {
+            position: absolute;
+            top: 210px;
+            left: 380px;
+            font-size: 4em;
+            color: rgb(200, 100, 0);
+        }
+        .speechBubble {
+            position: absolute;
+            top: 260px;
+            left: 90px;
+            width: 275px;
+            height: auto;
+            background-color: white;
+        }
+        .singleArrow {
+            position: absolute;
+            top: 40px;
+            left: 390px;
+            color: white;
+            font-size: 5em;
+        }
+        .littleText {
+            position: absolute;
+            top: 77px;
+            left: 390px;
+            font-size: 1.5em;
+            color: white;
+        }
+            
+        </style>
+    </head>
+    <body>
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Ruby_Beach_WA_low_tide.jpg" width="650" alt="example_background">
+
+    <i class="fas fa-dove" id="dove"></i>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+    
+        var imgArr = ["https://upload.wikimedia.org/wikipedia/commons/7/76/Ruby_Beach_WA_low_tide.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg/1200px-Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Paracas_National_Reserve%2C_Ica%2C_Peru-3April2011.jpg/300px-Paracas_National_Reserve%2C_Ica%2C_Peru-3April2011.jpg"];
+        var $projector = $("<img>").attr("src", imgArr[0]).attr("alt", "Example_Image").attr("width", "270").css("position", "absolute").css("top", "60px").css("left", "90px").css("border", "2px solid black").appendTo("body");
+        
+        var $speechBubble = $("<div>").addClass("speechBubble").appendTo("body");
+        
+        var textArr = ["Click me and I'll take you to a quick tour!", "This is Lorem Ipsum.", "This is Dolor Sit Amet."];
+        var $speechBubbleText = $("<p>").addClass("speechBubbleText").attr("align", "center").html(textArr[0]).appendTo($speechBubble);
+        
+        var $arrow = $("<p>").addClass("singleArrow arrowAndText").html("↓").appendTo("body");
+        var $littleText = $("<p>").addClass("littleText arrowAndText").html("Click").appendTo("body");
+        
+        var i = 0;
+        $("#dove").on("click", function(event) {
+            if(i === 2){
+                i = 0;
+                $projector.attr("src", imgArr[i]);
+                $speechBubbleText.html(textArr[i]);
+                $(".arrowAndText").css("display", "inline");
+            } else {
+                i++;
+                $projector.attr("src", imgArr[i]);
+                $speechBubbleText.html(textArr[i]);
+                $(".arrowAndText").css("display", "none");
+            }
+        });
+    </script>
+    </body>
+</html>
